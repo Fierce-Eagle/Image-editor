@@ -9,14 +9,13 @@ struct vectorRGB {
 };
 
 template <typename T>
-class Image : public IClone
+class Image : public IClone<Image<T>>
 {
 private:
 	T* image;
 
 	Image();
-	Image createEmptyImg(int rowSize, int colSize);
-
+	
 public:
 
 	int rows, cols; // строки и столбцы изображения
@@ -26,11 +25,11 @@ public:
 	/// <param name="filename"> название файла с расширением</param>
 	Image(string filename);
 
-	Image convertToGray();
+	Image(int rowSize, int colSize);
 
-	T* operator() (int x, int y);
+	T& operator() (int x, int y);
 
-	Image clone();
+	Image<T> clone();
 
 
 };
