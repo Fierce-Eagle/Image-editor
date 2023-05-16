@@ -10,7 +10,8 @@ public:
 
 	static Image<short> gray(Image<vectorRGB> image);
 
-	template <typename T>
-	static Image<T> grubCut(Image<T> image);
+	static Image<vectorRGB> negative(Image<vectorRGB> image);
+
+
 };
 

@@ -31,7 +31,7 @@ public:
 
 	Image<T> clone();
 
-
+	void save();
 };
 
 

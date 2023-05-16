@@ -42,3 +42,9 @@ Image<T> Image<T>::clone()
 
 	return cloneImg;
 }
+
+template<typename T>
+void Image<T>::save()
+{
+
+}

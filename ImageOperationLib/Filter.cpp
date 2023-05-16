@@ -48,10 +48,18 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 	 return bwImage;
  }
 
-
-
- template <typename T>
- Image<T> Filter::grubCut(Image<T> image)
+ Image<vectorRGB> Filter::negative(Image<vectorRGB> image)
  {
-
+	 Image<vectorRGB> negativeImage(image.rows, image.cols);
+	 for (int x = 0; x < image.cols; x++)
+		 for (int y = 0; y < image.rows; y++)
+		 {
+			 negativeImage(x, y).red = 255 - image(x, y).red;
+			 negativeImage(x, y).green = 255 - image(x, y).green;
+			 negativeImage(x, y).blue = 255 - image(x, y).blue;
+		 }
+	 return negativeImage;
  }
+
+ 
+

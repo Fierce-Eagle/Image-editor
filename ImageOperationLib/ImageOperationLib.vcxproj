@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ExpandImage.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="IClone.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ImageKernel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ExpandImage.cpp" />
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ImageKernel.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
