@@ -18,6 +18,17 @@ double& ImageKernel::operator() (int x, int y)
 	return *(matrix + y * size + x);
 }
 
+double ImageKernel::sum()
+{
+	double sum = 0;
+	for (int x = 0; x < this->size; x++)
+		for (int y = 0; y < this->size; y++)
+		{
+			sum += this->operator()(x, y);
+		}
+	return sum;
+}
+
 //-------------------------
 // Статические методы
 //-------------------------
@@ -28,23 +39,62 @@ double& ImageKernel::operator() (int x, int y)
 /// <param name="size"> размер ядра</param>
 /// <param name="sigma"> среднеквадратичное отклонение нормального распределения</param>
 /// <returns> ядро Гаусса</returns>
-ImageKernel ImageKernel::gauss(int size, int sigma)
+ImageKernel ImageKernel::gauss(int size, double sigma)
 {
 	ImageKernel gaussImg(size);
-	double constWithSigma = 2 * sigma * sigma;
+	const double two_sigma_sigma = 2 * sigma * sigma;
+	int halhSize = size / 2;
+	int kx, ky;
 
 	for (int x = 0; x < size; x++)
 	{
+		kx = x - halhSize;
 		for (int y = 0; y < size; y++)
 		{
-			gaussImg(x, y) = (1 / (constWithSigma * PI))
-				* exp(-(x * x + y * y) / constWithSigma);
+			ky = y - halhSize;
+			gaussImg(x, y) = (1 / (two_sigma_sigma * PI))
+				* exp(-(kx * kx + ky * ky) / two_sigma_sigma);
 		}
 	}
 	return gaussImg;
 }
 
-ImageKernel ImageKernel::laplassianGaussian(int size, int sigma)
+/// <summary>
+/// Ядро Лаплассиан-Гауссиана
+/// </summary>
+/// <param name="size">размер ядра (нечетное число)</param>
+/// <param name="sigma">сигма (параметр не должен быть равен 0)</param>
+/// <returns></returns>
+ImageKernel ImageKernel::laplassianGaussian(int size, double sigma)
 {
+	ImageKernel laplassianImg(size);
+	const double two_sigma_sigma = 2 * sigma * sigma;
+	const double sigma_pow_four = sigma * sigma * sigma * sigma;
+	int kx, ky, r;
+	int halfSize = size / 2;
+	for (int x = 0; x < size; x++)
+	{
+		kx = x - halfSize;
+		for (int y = 0; y < size; y++)
+		{
+			ky = y - halfSize;
+			r = kx * kx + ky * ky;
+			laplassianImg(x, y) = ((r - two_sigma_sigma) / sigma_pow_four)
+				* exp(-r / two_sigma_sigma);
+		}
+	}
+	return laplassianImg;
+}
 
+ImageKernel ImageKernel::sobel(int size)
+{
+	ImageKernel sobelKernel(size);
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int i = 0; i < size; i++)
+		{
+
+		}
+	}
 }

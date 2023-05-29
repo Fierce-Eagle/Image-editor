@@ -1,11 +1,15 @@
 #include "Image.h"
 using namespace std;
 
-
+/// <summary>
+/// Считывание картинки из файла
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="filename"> название файла с расширением</param>
 template<typename T>
 Image<T>::Image(string filename)
 {
-	
+	// TODO
 }
 
 template<typename T>
@@ -43,8 +47,13 @@ Image<T> Image<T>::clone()
 	return cloneImg;
 }
 
+/// <summary>
+/// Сохранение картинки
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="filename"> название файла с расширением</param>
 template<typename T>
-void Image<T>::save()
+void Image<T>::save(string filename)
 {
-
+	// TODO
 }

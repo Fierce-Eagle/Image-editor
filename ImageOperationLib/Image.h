@@ -5,7 +5,7 @@
 using namespace std;
 
 struct vectorRGB {
-	short red, green, blue;
+	short red = 0, green = 0, blue = 0;
 };
 
 template <typename T>
@@ -19,10 +19,7 @@ private:
 public:
 
 	int rows, cols; // строки и столбцы изображени€
-	/// <summary>
-	/// —читывание картинки из файла
-	/// </summary>
-	/// <param name="filename"> название файла с расширением</param>
+	
 	Image(string filename);
 
 	Image(int rowSize, int colSize);
@@ -31,7 +28,7 @@ public:
 
 	Image<T> clone();
 
-	void save();
+	void save(string filename);
 };
 
 

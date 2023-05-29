@@ -13,20 +13,16 @@ public:
 
 	double& operator() (int x, int y);
 
+	double sum();
+
 
 	//--------------------------------
 	// Статические методы
 	//--------------------------------
 	static ImageKernel sobel(int size);
 
-	/// <summary>
-	/// Получение ядра Гаусса
-	/// </summary>
-	/// <param name="size"> размер ядра</param>
-	/// <param name="sigma"> среднеквадратичное отклонение нормального распределения</param>
-	/// <returns> ядро Гаусса</returns>
-	static ImageKernel gauss(int size, int sigma);
+	static ImageKernel gauss(int size, double sigma);
 
-	static ImageKernel laplassianGaussian(int size, int sigma);
+	static ImageKernel laplassianGaussian(int size, double sigma);
 };
 

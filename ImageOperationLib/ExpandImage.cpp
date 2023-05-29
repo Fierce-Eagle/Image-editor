@@ -1,5 +1,12 @@
 #include "ExpandImage.h"
 
+/// <summary>
+/// Расширение изображения методом отзеркаливания
+/// </summary>
+/// <typeparam name="T"> тип данных (vectorRGB или short)</typeparam>
+/// <param name="image">картинка</param>
+/// <param name="padding">выступ</param>
+/// <returns>изображение расширенное на padding со всех сторон</returns>
 template <typename T>
 Image<T> ExpandImage::mirror(Image<T> image, int padding)
 {

@@ -4,6 +4,8 @@
 
 class Filter
 {
+private:
+	Filter(); // чтобы никто даже не пыталс€ создать экземпл€р объекта
 public:
 	static Image<short> blackWhite(Image<vectorRGB> image);
 	static Image<short> blackWhite(Image<short> grayImage);
@@ -12,6 +14,12 @@ public:
 
 	static Image<vectorRGB> negative(Image<vectorRGB> image);
 
+	//
+	// Ѕлюр
+	//
+	static Image<vectorRGB> gaussBlur(Image<vectorRGB> image, int maskSize, double sigma);
+
+	static Image<vectorRGB> laplassianGaussianBlur(Image<vectorRGB> image, int maskSize, double sigma);
 
 };
 
