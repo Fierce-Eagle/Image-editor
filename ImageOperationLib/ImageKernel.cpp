@@ -63,7 +63,7 @@ ImageKernel ImageKernel::gauss(int size, double sigma)
 /// Ядро Лаплассиан-Гауссиана
 /// </summary>
 /// <param name="size">размер ядра (нечетное число)</param>
-/// <param name="sigma">сигма (параметр не должен быть равен 0)</param>
+/// <param name="sigma">среднеквадратичное отклонение нормального распределения</param>
 /// <returns></returns>
 ImageKernel ImageKernel::laplassianGaussian(int size, double sigma)
 {

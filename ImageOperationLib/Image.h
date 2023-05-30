@@ -14,7 +14,6 @@ class Image : public IClone<Image<T>>
 private:
 	T* image;
 
-	Image();
 	
 public:
 
