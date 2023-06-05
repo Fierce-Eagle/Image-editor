@@ -1,6 +1,11 @@
 #include "Image.h"
 using namespace std;
 
+template<typename T>
+Image<T>::Image()
+{
+}
+
 /// <summary>
 /// —читывание картинки из файла
 /// </summary>
@@ -15,10 +20,17 @@ Image<T>::Image(string filename)
 template<typename T>
 Image<T>::Image(int rowSize, int colSize)
 {
-	Image<T> emptyImg;
+	Image<T> emptyImg();
 	emptyImg.image = new T(rowSize * colSize);
 	emptyImg.rows = rowSize;
 	emptyImg.cols = colSize;
+	for (int x = 0; x < cols; x++)
+	{
+		for (int y = 0; y < rows; y++)
+		{
+			emptyImg(x, y) = 0;
+		}
+	}
 
 	return emptyImg;
 }

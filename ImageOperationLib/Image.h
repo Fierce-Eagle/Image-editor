@@ -18,6 +18,8 @@ private:
 public:
 
 	int rows, cols; // строки и столбцы изображения
+
+	Image();
 	
 	Image(string filename);
 

@@ -161,5 +161,8 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 	 return blurWithMask(image, ImageKernel::laplassianGaussian(maskSize, sigma));
  }
 
+
+
+
  
 

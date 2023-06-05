@@ -1,17 +1,21 @@
 #pragma once
 #include "Image.h"
+#include <vector>
 
 class HoG
 {
 private:
-	template<typename T>
-	Image<T> hogImage();
-public:
-	template<typename T>
-	Image<T> createImage();
+	Image<short> hogImage;
+	int nBins, cellSize;
 
-	template<typename T>
-	void solve(Image<T> image, int cellSize, int nBins);
+	vector<short*> hists;
+public:
+
+	Image<short> createImage();
+
+	HoG(Image<short> image, int cellSize, int nBins);
+
+	vector<short*> getHistograms();
 
 };
 
