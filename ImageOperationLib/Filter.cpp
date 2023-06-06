@@ -115,6 +115,23 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 	 return point;
  }
 
+ short multiplyOnMask(int x, int y, Image<short> image, ImageKernel kernel)
+ {
+	 int kernelCenter = kernel.size / 2;
+	 short point = 0;
+	 for (int _x = 0; _x < kernel.size; _x++)
+		 for (int _y = 0; _y < kernel.size; _y++)
+		 {
+			 point += (kernel(_x, _y) * image(x - kernelCenter + _x, y - kernelCenter + _y));
+		 }
+
+	 // нормализация
+	 double normolizeCoeff = kernel.sum();
+	 point /= normolizeCoeff;
+
+	 return point;
+ }
+
 
  /// <summary>
  /// Блюр картинки с помощью маски
@@ -122,13 +139,14 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
  /// <param name="image">картинка</param>
  /// <param name="kernel">маска</param>
  /// <returns>заблюренная картинка</returns>
- Image<vectorRGB> blurWithMask(Image<vectorRGB> image, ImageKernel kernel)
+ template<typename T>
+ Image<T> blurWithMask(Image<T> image, ImageKernel kernel)
  {
 	 int halfMaskSize = kernel.size / 2;
 	 int expImgColEnd = halfMaskSize + image.cols;
 	 int expImgRowEnd = halfMaskSize + image.rows;
-	 Image<vectorRGB> expImg = ExpandImage::mirror(image, halfMaskSize);
-	 Image<vectorRGB> blurImg(image.rows, image.cols);
+	 Image<T> expImg = ExpandImage::mirror(image, halfMaskSize);
+	 Image<T> blurImg(image.rows, image.cols);
 
 	 for (int x = halfMaskSize; x < expImgColEnd; x++)
 		 for (int y = halfMaskSize; y < expImgRowEnd; y++)
@@ -136,6 +154,8 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 
 	 return blurImg;
  }
+
+
 
  /// <summary>
  /// Фильтр Гаусса
@@ -159,6 +179,19 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
  Image<vectorRGB> Filter::laplassianGaussianBlur(Image<vectorRGB> image, int maskSize, double sigma)
  {
 	 return blurWithMask(image, ImageKernel::laplassianGaussian(maskSize, sigma));
+ }
+
+
+ /// <summary>
+ /// Фильтр Собеля
+ /// </summary>
+ /// <param name="image"></param>
+ /// <param name="maskSize"></param>
+ /// <param name="asix"></param>
+ /// <returns></returns>
+ Image<short> Filter::sobel(Image<short> image, int maskSize, int asix)
+ {
+	 return blurWithMask(image, ImageKernel::sobel(maskSize, asix));
  }
 
 

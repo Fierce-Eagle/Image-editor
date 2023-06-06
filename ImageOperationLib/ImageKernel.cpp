@@ -86,15 +86,10 @@ ImageKernel ImageKernel::laplassianGaussian(int size, double sigma)
 	return laplassianImg;
 }
 
-ImageKernel ImageKernel::sobel(int size)
+ImageKernel ImageKernel::sobel(int size, int asix)
 {
 	ImageKernel sobelKernel(size);
 
-	for (int i = 0; i < size; i++)
-	{
-		for (int i = 0; i < size; i++)
-		{
-
-		}
-	}
+	// TODO
+	return sobelKernel;
 }

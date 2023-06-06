@@ -19,7 +19,7 @@ public:
 	//--------------------------------
 	// Статические методы
 	//--------------------------------
-	static ImageKernel sobel(int size);
+	static ImageKernel sobel(int size, int asix);
 
 	static ImageKernel gauss(int size, double sigma);
 

@@ -50,11 +50,11 @@ Image<T> Image<T>::clone()
 	{
 		for (int x = 0; x < rows; x++)
 		{
-			cloneImg(x, y) = this->operator(x, y);			
+			cloneImg(x, y) = this->operator()(x, y);			
 		}
 	}
-	cloneImg.rows = rowSize;
-	cloneImg.cols = colSize;
+	cloneImg.rows = rows;
+	cloneImg.cols = cols;
 
 	return cloneImg;
 }

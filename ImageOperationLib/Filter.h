@@ -21,5 +21,7 @@ public:
 
 	static Image<vectorRGB> laplassianGaussianBlur(Image<vectorRGB> image, int maskSize, double sigma);
 
+	static Image<short> sobel(Image<short> image, int maskSize, int asix);
+
 };
 
