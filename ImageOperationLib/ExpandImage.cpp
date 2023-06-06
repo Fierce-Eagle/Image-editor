@@ -1,18 +1,18 @@
-#include "ExpandImage.h"
+п»ї#include "ExpandImage.h"
 
 /// <summary>
-/// Расширение изображения методом отзеркаливания
+/// Р Р°СЃС€РёСЂРµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РјРµС‚РѕРґРѕРј РѕС‚Р·РµСЂРєР°Р»РёРІР°РЅРёСЏ
 /// </summary>
-/// <typeparam name="T"> тип данных (vectorRGB или short)</typeparam>
-/// <param name="image">картинка</param>
-/// <param name="padding">выступ</param>
-/// <returns>изображение расширенное на padding со всех сторон</returns>
+/// <typeparam name="T"> С‚РёРї РґР°РЅРЅС‹С… (vectorRGB РёР»Рё short)</typeparam>
+/// <param name="image">РєР°СЂС‚РёРЅРєР°</param>
+/// <param name="padding">РІС‹СЃС‚СѓРї</param>
+/// <returns>РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЂР°СЃС€РёСЂРµРЅРЅРѕРµ РЅР° padding СЃРѕ РІСЃРµС… СЃС‚РѕСЂРѕРЅ</returns>
 template <typename T>
 Image<T> ExpandImage::mirror(Image<T> image, int padding)
 {
 	Image<T> expMirrorImage(image.rows + 2 * padding, image.cols + 2 * padding);
 
-	// заполнение справа и слева
+	// Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРїСЂР°РІР° Рё СЃР»РµРІР°
 	for (int x = 0; x < padding; x++)
 		for (int y = 0; y < image.rows; y++)
 		{
@@ -20,14 +20,14 @@ Image<T> ExpandImage::mirror(Image<T> image, int padding)
 			expMirrorImage(expMirrorImage.cols - x, y + padding) = image(image.cols - padding - 1 + x, y);
 		}
 
-	// заполнение середины
+	// Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРµСЂРµРґРёРЅС‹
 	for (int x = 0; x < image.cols; x++)
 		for (int y = 0; y < image.rows; y++)
 		{
 			expMirrorImage(x + padding, y + padding) = image(x, y);
 		}
 
-	// заполнение сверху и снизу
+	// Р·Р°РїРѕР»РЅРµРЅРёРµ СЃРІРµСЂС…Сѓ Рё СЃРЅРёР·Сѓ
 	for (int x = 0; x < expMirrorImage.cols; x++)
 	{
 		for (int y = 0; y < padding; y++)

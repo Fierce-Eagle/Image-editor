@@ -1,4 +1,4 @@
-#include "HoG.h"
+п»ї#include "HoG.h"
 #include <math.h>
 #include "Filter.h"
 
@@ -41,7 +41,7 @@ Image<short> HoG::createImage()
 }
 
 /// <summary>
-/// Создание гистограммы в область
+/// РЎРѕР·РґР°РЅРёРµ РіРёСЃС‚РѕРіСЂР°РјРјС‹ РІ РѕР±Р»Р°СЃС‚СЊ
 /// </summary>
 /// <param name="x"></param>
 /// <param name="y"></param>
@@ -83,11 +83,11 @@ short* createHistInCell(int x, int y, Image<short> Ix, Image<short> Iy, int cell
 }
 
 /// <summary>
-/// Гистограммы ориентированных градиентов
+/// Р“РёСЃС‚РѕРіСЂР°РјРјС‹ РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅРЅС‹С… РіСЂР°РґРёРµРЅС‚РѕРІ
 /// </summary>
-/// <param name="image">картинка</param>
-/// <param name="cellSize">размер блока для 1 гистограммы</param>
-/// <param name="nBins">кол-во ячеек в гистограмме</param>
+/// <param name="image">РєР°СЂС‚РёРЅРєР°</param>
+/// <param name="cellSize">СЂР°Р·РјРµСЂ Р±Р»РѕРєР° РґР»СЏ 1 РіРёСЃС‚РѕРіСЂР°РјРјС‹</param>
+/// <param name="nBins">РєРѕР»-РІРѕ СЏС‡РµРµРє РІ РіРёСЃС‚РѕРіСЂР°РјРјРµ</param>
 HoG::HoG(Image<short> image, int cellSize, int nBins)
 {
 	this->nBins = nBins;

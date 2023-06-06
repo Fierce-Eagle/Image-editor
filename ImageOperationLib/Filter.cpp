@@ -1,12 +1,12 @@
-#include "Filter.h"
+п»ї#include "Filter.h"
 #include "ExpandImage.h"
 #include "ImageKernel.h"
 
 /// <summary>
-/// Серый цвет
+/// РЎРµСЂС‹Р№ С†РІРµС‚
 /// </summary>
-/// <param name="image">цветная картинка</param>
-/// <returns>изображение в оттенках серого</returns>
+/// <param name="image">С†РІРµС‚РЅР°СЏ РєР°СЂС‚РёРЅРєР°</param>
+/// <returns>РёР·РѕР±СЂР°Р¶РµРЅРёРµ РІ РѕС‚С‚РµРЅРєР°С… СЃРµСЂРѕРіРѕ</returns>
 Image<short> Filter::gray(Image<vectorRGB> image)
 {
 	Image<short> grayImg(image.rows, image.cols);
@@ -25,10 +25,10 @@ Image<short> Filter::gray(Image<vectorRGB> image)
 }
 
 /// <summary>
-/// Черно-белое изображение
+/// Р§РµСЂРЅРѕ-Р±РµР»РѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
 /// </summary>
-/// <param name="image">цветная картинка</param>
-/// <returns>черно-белая картинка</returns>
+/// <param name="image">С†РІРµС‚РЅР°СЏ РєР°СЂС‚РёРЅРєР°</param>
+/// <returns>С‡РµСЂРЅРѕ-Р±РµР»Р°СЏ РєР°СЂС‚РёРЅРєР°</returns>
 Image<short> Filter::blackWhite(Image<vectorRGB> image)
 {
 	Image<short> bwImage(image.rows, image.cols);
@@ -46,10 +46,10 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 }
 
  /// <summary>
- /// Черно-белое изображение
+ /// Р§РµСЂРЅРѕ-Р±РµР»РѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
  /// </summary>
- /// <param name="grayImage">картинка в оттенках серого</param>
- /// <returns>черно-белая картинка</returns>
+ /// <param name="grayImage">РєР°СЂС‚РёРЅРєР° РІ РѕС‚С‚РµРЅРєР°С… СЃРµСЂРѕРіРѕ</param>
+ /// <returns>С‡РµСЂРЅРѕ-Р±РµР»Р°СЏ РєР°СЂС‚РёРЅРєР°</returns>
  Image<short> Filter::blackWhite(Image<short> grayImage)
  {
 	 Image<short> bwImage(grayImage.rows, grayImage.cols);
@@ -66,9 +66,9 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
  }
 
  /// <summary>
- /// Фильтр негатив
+ /// Р¤РёР»СЊС‚СЂ РЅРµРіР°С‚РёРІ
  /// </summary>
- /// <param name="image">цветная картинка</param>
+ /// <param name="image">С†РІРµС‚РЅР°СЏ РєР°СЂС‚РёРЅРєР°</param>
  /// <returns></returns>
  Image<vectorRGB> Filter::negative(Image<vectorRGB> image)
  {
@@ -85,15 +85,15 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 
 
  //==========================================
- // Блюр (по идее нужен еще 1 файл для этого)
+ // Р‘Р»СЋСЂ (РїРѕ РёРґРµРµ РЅСѓР¶РµРЅ РµС‰Рµ 1 С„Р°Р№Р» РґР»СЏ СЌС‚РѕРіРѕ)
  //==========================================
 
  /// <summary>
- /// Умножение фрагмента изображения на маску
+ /// РЈРјРЅРѕР¶РµРЅРёРµ С„СЂР°РіРјРµРЅС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° РјР°СЃРєСѓ
  /// </summary>
- /// <param name="image">картинка</param>
- /// <param name="kernel">маска</param>
- /// <returns>пиксель - результат перемножения и нормализации</returns>
+ /// <param name="image">РєР°СЂС‚РёРЅРєР°</param>
+ /// <param name="kernel">РјР°СЃРєР°</param>
+ /// <returns>РїРёРєСЃРµР»СЊ - СЂРµР·СѓР»СЊС‚Р°С‚ РїРµСЂРµРјРЅРѕР¶РµРЅРёСЏ Рё РЅРѕСЂРјР°Р»РёР·Р°С†РёРё</returns>
  vectorRGB multiplyOnMask(int x, int y, Image<vectorRGB> image, ImageKernel kernel)
  {
 	 int kernelCenter = kernel.size / 2;
@@ -106,7 +106,7 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 			 point.blue += (kernel(_x, _y) * image(x - kernelCenter + _x, y - kernelCenter + _y).blue);
 		 }
 	 
-	 // нормализация
+	 // РЅРѕСЂРјР°Р»РёР·Р°С†РёСЏ
 	 double normolizeCoeff = kernel.sum();
 	 point.red /= normolizeCoeff;
 	 point.green /= normolizeCoeff;
@@ -125,7 +125,7 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 			 point += (kernel(_x, _y) * image(x - kernelCenter + _x, y - kernelCenter + _y));
 		 }
 
-	 // нормализация
+	 // РЅРѕСЂРјР°Р»РёР·Р°С†РёСЏ
 	 double normolizeCoeff = kernel.sum();
 	 point /= normolizeCoeff;
 
@@ -134,11 +134,11 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 
 
  /// <summary>
- /// Блюр картинки с помощью маски
+ /// Р‘Р»СЋСЂ РєР°СЂС‚РёРЅРєРё СЃ РїРѕРјРѕС‰СЊСЋ РјР°СЃРєРё
  /// </summary>
- /// <param name="image">картинка</param>
- /// <param name="kernel">маска</param>
- /// <returns>заблюренная картинка</returns>
+ /// <param name="image">РєР°СЂС‚РёРЅРєР°</param>
+ /// <param name="kernel">РјР°СЃРєР°</param>
+ /// <returns>Р·Р°Р±Р»СЋСЂРµРЅРЅР°СЏ РєР°СЂС‚РёРЅРєР°</returns>
  template<typename T>
  Image<T> blurWithMask(Image<T> image, ImageKernel kernel)
  {
@@ -158,24 +158,24 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 
 
  /// <summary>
- /// Фильтр Гаусса
+ /// Р¤РёР»СЊС‚СЂ Р“Р°СѓСЃСЃР°
  /// </summary>
- /// <param name="image">картинка (не будет изменена)</param>
- /// <param name="maskSize">размер маски (нечетное число)</param>
- /// <param name="sigma">среднеквадратичное отклонение нормального распределения</param>
- /// <returns>заблюренная фильтром Гаусса картинка</returns>
+ /// <param name="image">РєР°СЂС‚РёРЅРєР° (РЅРµ Р±СѓРґРµС‚ РёР·РјРµРЅРµРЅР°)</param>
+ /// <param name="maskSize">СЂР°Р·РјРµСЂ РјР°СЃРєРё (РЅРµС‡РµС‚РЅРѕРµ С‡РёСЃР»Рѕ)</param>
+ /// <param name="sigma">СЃСЂРµРґРЅРµРєРІР°РґСЂР°С‚РёС‡РЅРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ РЅРѕСЂРјР°Р»СЊРЅРѕРіРѕ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ</param>
+ /// <returns>Р·Р°Р±Р»СЋСЂРµРЅРЅР°СЏ С„РёР»СЊС‚СЂРѕРј Р“Р°СѓСЃСЃР° РєР°СЂС‚РёРЅРєР°</returns>
  Image<vectorRGB> Filter::gaussBlur(Image<vectorRGB> image, int maskSize, double sigma)
  {
 	 return blurWithMask(image, ImageKernel::gauss(maskSize, sigma));
  }
 
  /// <summary>
-  /// Фильтр Лаплассиан Гауссиана
+  /// Р¤РёР»СЊС‚СЂ Р›Р°РїР»Р°СЃСЃРёР°РЅ Р“Р°СѓСЃСЃРёР°РЅР°
   /// </summary>
-  /// <param name="image">картинка (не будет изменена)</param>
-  /// <param name="maskSize">размер маски (нечетное число)</param>
-  /// <param name="sigma">среднеквадратичное отклонение нормального распределения</param>
-  /// <returns>заблюренная фильтром Лаплассиан Гауссиана картинка</returns>
+  /// <param name="image">РєР°СЂС‚РёРЅРєР° (РЅРµ Р±СѓРґРµС‚ РёР·РјРµРЅРµРЅР°)</param>
+  /// <param name="maskSize">СЂР°Р·РјРµСЂ РјР°СЃРєРё (РЅРµС‡РµС‚РЅРѕРµ С‡РёСЃР»Рѕ)</param>
+  /// <param name="sigma">СЃСЂРµРґРЅРµРєРІР°РґСЂР°С‚РёС‡РЅРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ РЅРѕСЂРјР°Р»СЊРЅРѕРіРѕ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ</param>
+  /// <returns>Р·Р°Р±Р»СЋСЂРµРЅРЅР°СЏ С„РёР»СЊС‚СЂРѕРј Р›Р°РїР»Р°СЃСЃРёР°РЅ Р“Р°СѓСЃСЃРёР°РЅР° РєР°СЂС‚РёРЅРєР°</returns>
  Image<vectorRGB> Filter::laplassianGaussianBlur(Image<vectorRGB> image, int maskSize, double sigma)
  {
 	 return blurWithMask(image, ImageKernel::laplassianGaussian(maskSize, sigma));
@@ -183,7 +183,7 @@ Image<short> Filter::blackWhite(Image<vectorRGB> image)
 
 
  /// <summary>
- /// Фильтр Собеля
+ /// Р¤РёР»СЊС‚СЂ РЎРѕР±РµР»СЏ
  /// </summary>
  /// <param name="image"></param>
  /// <param name="maskSize"></param>

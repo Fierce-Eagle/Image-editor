@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include "IClone.h"
 
@@ -17,7 +17,7 @@ private:
 	
 public:
 
-	int rows, cols; // строки и столбцы изображения
+	int rows, cols; // СЃС‚СЂРѕРєРё Рё СЃС‚РѕР»Р±С†С‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 
 	Image();
 	

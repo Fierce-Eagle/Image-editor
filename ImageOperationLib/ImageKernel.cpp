@@ -1,4 +1,4 @@
-#include "ImageKernel.h"
+п»ї#include "ImageKernel.h"
 #include <math.h>
 
 # define PI 3.14159265358979323846 
@@ -30,15 +30,15 @@ double ImageKernel::sum()
 }
 
 //-------------------------
-// Статические методы
+// РЎС‚Р°С‚РёС‡РµСЃРєРёРµ РјРµС‚РѕРґС‹
 //-------------------------
 
 /// <summary>
-/// Получение ядра Гаусса
+/// РџРѕР»СѓС‡РµРЅРёРµ СЏРґСЂР° Р“Р°СѓСЃСЃР°
 /// </summary>
-/// <param name="size"> размер ядра</param>
-/// <param name="sigma"> среднеквадратичное отклонение нормального распределения</param>
-/// <returns> ядро Гаусса</returns>
+/// <param name="size"> СЂР°Р·РјРµСЂ СЏРґСЂР°</param>
+/// <param name="sigma"> СЃСЂРµРґРЅРµРєРІР°РґСЂР°С‚РёС‡РЅРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ РЅРѕСЂРјР°Р»СЊРЅРѕРіРѕ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ</param>
+/// <returns> СЏРґСЂРѕ Р“Р°СѓСЃСЃР°</returns>
 ImageKernel ImageKernel::gauss(int size, double sigma)
 {
 	ImageKernel gaussImg(size);
@@ -60,10 +60,10 @@ ImageKernel ImageKernel::gauss(int size, double sigma)
 }
 
 /// <summary>
-/// Ядро Лаплассиан-Гауссиана
+/// РЇРґСЂРѕ Р›Р°РїР»Р°СЃСЃРёР°РЅ-Р“Р°СѓСЃСЃРёР°РЅР°
 /// </summary>
-/// <param name="size">размер ядра (нечетное число)</param>
-/// <param name="sigma">среднеквадратичное отклонение нормального распределения</param>
+/// <param name="size">СЂР°Р·РјРµСЂ СЏРґСЂР° (РЅРµС‡РµС‚РЅРѕРµ С‡РёСЃР»Рѕ)</param>
+/// <param name="sigma">СЃСЂРµРґРЅРµРєРІР°РґСЂР°С‚РёС‡РЅРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ РЅРѕСЂРјР°Р»СЊРЅРѕРіРѕ СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ</param>
 /// <returns></returns>
 ImageKernel ImageKernel::laplassianGaussian(int size, double sigma)
 {

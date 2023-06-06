@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Image.h"
 
 class ImageKernel
@@ -17,7 +17,7 @@ public:
 
 
 	//--------------------------------
-	// Статические методы
+	// РЎС‚Р°С‚РёС‡РµСЃРєРёРµ РјРµС‚РѕРґС‹
 	//--------------------------------
 	static ImageKernel sobel(int size, int asix);
 

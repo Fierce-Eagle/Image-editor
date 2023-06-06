@@ -1,11 +1,11 @@
-#pragma once
+п»ї#pragma once
 #include "Image.h"
 
 
 class Filter
 {
 private:
-	Filter(); // чтобы никто даже не пытался создать экземпляр объекта
+	Filter(); // С‡С‚РѕР±С‹ РЅРёРєС‚Рѕ РґР°Р¶Рµ РЅРµ РїС‹С‚Р°Р»СЃСЏ СЃРѕР·РґР°С‚СЊ СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°
 public:
 	static Image<short> blackWhite(Image<vectorRGB> image);
 	static Image<short> blackWhite(Image<short> grayImage);
@@ -15,12 +15,15 @@ public:
 	static Image<vectorRGB> negative(Image<vectorRGB> image);
 
 	//
-	// Блюр
+	// Р‘Р»СЋСЂ
 	//
 	static Image<vectorRGB> gaussBlur(Image<vectorRGB> image, int maskSize, double sigma);
 
 	static Image<vectorRGB> laplassianGaussianBlur(Image<vectorRGB> image, int maskSize, double sigma);
 
+	//
+	// РЎРїРµС†РёС„РёС‡РЅС‹Рµ С„РёР»СЊС‚СЂС‹
+	//
 	static Image<short> sobel(Image<short> image, int maskSize, int asix);
 
 };
